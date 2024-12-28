@@ -1,0 +1,127 @@
+{
+    "appTitle": "កម្មវិធីកក់កន្លែងលេងកីឡា",
+    "welcome": "សូមស្វាគមន៍",
+    "languageSwitch": "ផ្លាស់ប្តូរភាសា",
+    "loading": "កំពុងផ្ទុក...",
+    "error": "មានបញ្ហាកើតឡើង",
+    "@error": {
+      "description": "សារច្រើនសម្រាប់កំហុស"
+    },
+    "login": "ចូលប្រើប្រាស់",
+    "@login": {
+      "description": "ប៊ូតុងឬអត្ថបទសម្រាប់ការចូលប្រើប្រាស់"
+    },
+    "register": "ចុះឈ្មោះ",
+    "@register": {
+      "description": "ប៊ូតុងឬអត្ថបទសម្រាប់ចុះឈ្មោះ"
+    },
+    "logout": "ចាកចេញ",
+    "@logout": {
+      "description": "ប៊ូតុងឬអត្ថបទសម្រាប់ចាកចេញ"
+    },
+    "profile": "ពត៌មានផ្ទាល់ខ្លួន",
+    "@profile": {
+      "description": "ផ្នែកពត៌មានផ្ទាល់ខ្លួន"
+    },
+    "editProfile": "កែសម្រួលពត៌មាន",
+    "@editProfile": {
+      "description": "ប៊ូតុងសម្រាប់កែសម្រួលពត៌មាន"
+    },
+    "favorites": "ចូលចិត្ត",
+    "@favorites": {
+      "description": "បញ្ជីកន្លែងដែលចូលចិត្ត"
+    },
+    "search": "ស្វែងរក",
+    "@search": {
+      "description": "ប៊ូតុងឬស្លាកសម្រាប់ស្វែងរក"
+    },
+    "searchPlaceholder": "ស្វែងរកតាមទីតាំង ប្រភេទកីឡា ឬកាលបរិច្ឆេទ",
+    "@searchPlaceholder": {
+      "description": "អត្ថបទនៅក្នុងប្រអប់ស្វែងរក"
+    },
+    "venueDetails": "ព័ត៌មានលំអិតអំពីកន្លែង",
+    "@venueDetails": {
+      "description": "ទំព័រឬផ្នែកព័ត៌មានលំអិតអំពីកន្លែង"
+    },
+    "availability": "មានក្នុងស្តុក",
+    "@availability": {
+      "description": "ស្លាកសម្រាប់ស្តុកដែលមាន"
+    },
+    "amenities": "សេវាកម្ម",
+    "@amenities": {
+      "description": "ផ្នែកឬបញ្ជីសេវាកម្ម"
+    },
+    "pricing": "តម្លៃ",
+    "@pricing": {
+      "description": "ស្លាកសម្រាប់តម្លៃ"
+    },
+    "reviews": "មតិយោបល់",
+    "@reviews": {
+      "description": "ផ្នែកមតិយោបល់របស់អ្នកប្រើ"
+    },
+    "addToFavorites": "បន្ថែមទៅក្នុងចូលចិត្ត",
+    "@addToFavorites": {
+      "description": "ប៊ូតុងសម្រាប់បន្ថែមទៅក្នុងចូលចិត្ត"
+    },
+    "booking": "ការកក់",
+    "@booking": {
+      "description": "ផ្នែកឬទំព័រសម្រាប់ការកក់កន្លែង"
+    },
+    "selectVenue": "ជ្រើសរើសកន្លែង",
+    "@selectVenue": {
+      "description": "ស្លាកសម្រាប់ជ្រើសរើសកន្លែង"
+    },
+    "selectDateTime": "ជ្រើសរើសកាលបរិច្ឆេទ និងម៉ោង",
+    "@selectDateTime": {
+      "description": "ស្លាកសម្រាប់ជ្រើសរើសកាលបរិច្ឆេទ និងម៉ោង"
+    },
+    "bookNow": "កក់ឥឡូវនេះ",
+    "@bookNow": {
+      "description": "ប៊ូតុងសម្រាប់បញ្ជាក់ការកក់"
+    },
+    "bookingSuccess": "ការកក់បានជោគជ័យ!",
+    "@bookingSuccess": {
+      "description": "សារដែលបង្ហាញបន្ទាប់ពីការកក់បានជោគជ័យ"
+    },
+    "payment": "ការទូទាត់",
+    "@payment": {
+      "description": "ផ្នែកឬស្លាកសម្រាប់ការទូទាត់"
+    },
+    "payNow": "បង់ប្រាក់ឥឡូវនេះ",
+    "@payNow": {
+      "description": "ប៊ូតុងសម្រាប់បន្តការទូទាត់"
+    },
+    "paymentSuccess": "ការទូទាត់បានជោគជ័យ!",
+    "@paymentSuccess": {
+      "description": "សារដែលបង្ហាញបន្ទាប់ពីការទូទាត់បានជោគជ័យ"
+    },
+    "paymentFailure": "ការទូទាត់បរាជ័យ",
+    "@paymentFailure": {
+      "description": "សារដែលបង្ហាញនៅពេលការទូទាត់បរាជ័យ"
+    },
+    "refundPolicy": "គោលការណ៍សងប្រាក់វិញ",
+    "@refundPolicy": {
+      "description": "ផ្នែកឬតំណភ្ជាប់សម្រាប់ព័ត៌មានអំពីគោលការណ៍សងប្រាក់វិញ"
+    },
+    "notifications": "ការជូនដំណឹង",
+    "@notifications": {
+      "description": "ផ្នែកឬបញ្ជីការជូនដំណឹង"
+    },
+    "noNotifications": "គ្មានការជូនដំណឹងថ្មី",
+    "@noNotifications": {
+      "description": "សារដែលបង្ហាញនៅពេលគ្មានការជូនដំណឹង"
+    },
+    "english": "ភាសាអង់គ្លេស",
+    "@english": {
+      "description": "ស្លាកសម្រាប់ភាសាអង់គ្លេស"
+    },
+    "khmer": "ភាសាខ្មែរ",
+    "@khmer": {
+      "description": "ស្លាកសម្រាប់ភាសាខ្មែរ"
+    },
+    "changeLanguage": "ផ្លាស់ប្តូរភាសា",
+    "@changeLanguage": {
+      "description": "ជម្រើសដើម្បីផ្លាស់ប្តូរភាសាក្នុងកម្មវិធី"
+    }
+  }
+  

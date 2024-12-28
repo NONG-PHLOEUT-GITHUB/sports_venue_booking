@@ -1,0 +1,129 @@
+{
+  "appTitle": "Sports Venue Booking App",
+  "welcome": "Welcome",
+  "languageSwitch": "Switch Language",
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Text displayed during loading"
+  },
+  "error": "An error occurred",
+  "@error": {
+    "description": "Generic error message"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Button or text for logging in"
+  },
+  "register": "Register",
+  "@register": {
+    "description": "Button or text for user registration"
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Button or text for logging out"
+  },
+  "profile": "Profile",
+  "@profile": {
+    "description": "User profile section"
+  },
+  "editProfile": "Edit Profile",
+  "@editProfile": {
+    "description": "Button or text for editing user profile"
+  },
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "List of favorite venues"
+  },
+  "search": "Search",
+  "@search": {
+    "description": "Search button or input label"
+  },
+  "searchPlaceholder": "Search by location, sport type, or date",
+  "@searchPlaceholder": {
+    "description": "Placeholder text for search input"
+  },
+  "venueDetails": "Venue Details",
+  "@venueDetails": {
+    "description": "Page or section for venue details"
+  },
+  "availability": "Availability",
+  "@availability": {
+    "description": "Label for venue availability"
+  },
+  "amenities": "Amenities",
+  "@amenities": {
+    "description": "Section or list of amenities"
+  },
+  "pricing": "Pricing",
+  "@pricing": {
+    "description": "Label for pricing information"
+  },
+  "reviews": "Reviews",
+  "@reviews": {
+    "description": "User reviews section"
+  },
+  "addToFavorites": "Add to Favorites",
+  "@addToFavorites": {
+    "description": "Button to add venue to favorites"
+  },
+  "booking": "Booking",
+  "@booking": {
+    "description": "Section or page for booking venues"
+  },
+  "selectVenue": "Select Venue",
+  "@selectVenue": {
+    "description": "Label for selecting a venue"
+  },
+  "selectDateTime": "Select Date & Time",
+  "@selectDateTime": {
+    "description": "Label for selecting date and time"
+  },
+  "bookNow": "Book Now",
+  "@bookNow": {
+    "description": "Button to confirm a booking"
+  },
+  "bookingSuccess": "Booking Successful!",
+  "@bookingSuccess": {
+    "description": "Message displayed after successful booking"
+  },
+  "bookingHistory": "Booking History",
+  "@bookingHistory": {
+    "description": "Page showing user's past bookings"
+  },
+  "cancelBooking": "Cancel Booking",
+  "@cancelBooking": {
+    "description": "Button or option to cancel a booking"
+  },
+  "payment": "Payment",
+  "@payment": {
+    "description": "Section or label for payment"
+  },
+  "payNow": "Pay Now",
+  "@payNow": {
+    "description": "Button to proceed with payment"
+  },
+  "paymentSuccess": "Payment Successful!",
+  "@paymentSuccess": {
+    "description": "Message displayed after successful payment"
+  },
+  "paymentFailure": "Payment Failed",
+  "@paymentFailure": {
+    "description": "Message displayed when payment fails"
+  },
+  "refundPolicy": "Refund Policy",
+  "@refundPolicy": {
+    "description": "Section or link to refund policy details"
+  },
+  "english": "English",
+  "@english": {
+    "description": "Label for English language"
+  },
+  "khmer": "Khmer",
+  "@khmer": {
+    "description": "Label for Khmer language"
+  },
+  "changeLanguage": "Change Language",
+  "@changeLanguage": {
+    "description": "Option to change app language"
+  }
+}
