@@ -3,6 +3,11 @@
 A new Flutter project.
 
 ## Getting Started
+run project in terminal
+flutter run 
+
+reload changes
+press 'r' in terminal
 
 This project is a starting point for a Flutter application.
 

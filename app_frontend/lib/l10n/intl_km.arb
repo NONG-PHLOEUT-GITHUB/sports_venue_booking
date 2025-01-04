@@ -1,8 +1,12 @@
 {
     "appTitle": "កម្មវិធីកក់កន្លែងលេងកីឡា",
+    "@appTitle": {},
     "welcome": "សូមស្វាគមន៍",
+    "@welcome": {},
     "languageSwitch": "ផ្លាស់ប្តូរភាសា",
+    "@languageSwitch": {},
     "loading": "កំពុងផ្ទុក...",
+    "@loading": {},
     "error": "មានបញ្ហាកើតឡើង",
     "@error": {
       "description": "សារច្រើនសម្រាប់កំហុស"

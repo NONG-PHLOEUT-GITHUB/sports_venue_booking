@@ -1,7 +1,10 @@
 {
   "appTitle": "Sports Venue Booking App",
+  "@appTitle": {},
   "welcome": "Welcome",
+  "@welcome": {},
   "languageSwitch": "Switch Language",
+  "@languageSwitch": {},
   "loading": "Loading...",
   "@loading": {
     "description": "Text displayed during loading"
