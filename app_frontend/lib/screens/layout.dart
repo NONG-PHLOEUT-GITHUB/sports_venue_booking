@@ -3,6 +3,7 @@ import 'home_page.dart';
 import 'account_page.dart';
 import 'booking_page.dart';
 import 'ticket_page.dart';
+import '../theme/app_colors.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -50,11 +51,11 @@ class _MainLayoutState extends State<MainLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
-            label: 'Account',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
         selectedLabelStyle: const TextStyle(fontSize: 12),

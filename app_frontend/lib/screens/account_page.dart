@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_venue_booking/theme/app_colors.dart';
 import 'switch_language_page.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -8,7 +9,15 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Profile'),
+        title: const Text(
+          'My Profile',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.onSecondary,
+          ),
+        ),
+        backgroundColor: AppColors.primary,
         actions: [
           IconButton(
             onPressed: () {
@@ -41,9 +50,24 @@ class ProfilePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => EditProfilePage()),
+                      MaterialPageRoute(
+                          builder: (context) => EditProfilePage()),
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        AppColors.primary, // Set the button's background color
+                    foregroundColor: AppColors.onPrimary, // Set the text color
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(5), // Set border radius
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize:
+                          16, // Optional: Define font size or other text properties
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   child: const Text('Edit Profile'),
                 ),
                 const SizedBox(height: 16),
@@ -53,7 +77,7 @@ class ProfilePage extends StatelessWidget {
           const Divider(),
           _buildListTile(Icons.notifications_outlined, 'Notifications'),
           _buildListTile(Icons.favorite_outline, 'Favourites'),
-          _buildListTile(Icons.download_outlined, 'Downloads'),
+          _buildListTile(Icons.save_outlined, 'Saving List'),
           _buildListTile(Icons.language_outlined, 'Language', onTap: () {
             Navigator.push(
               context,
@@ -109,20 +133,50 @@ class EditProfilePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
+        child: Column(
           children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage(
-                'https://via.placeholder.com/150', // Replace with actual image URL
+            Expanded(
+              child: ListView(
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: NetworkImage(
+                      'https://via.placeholder.com/150', // Replace with actual image URL
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  _buildTextField('Name', 'Charlotte King'),
+                  _buildTextField(
+                      'Email address', '@johnkinggraphics.gmail.com'),
+                  _buildTextField('Username', '@johnkinggraphics'),
+                  _buildTextField('Password', '**********', isPassword: true),
+                  _buildTextField('Phone number', '+91 6895312'),
+                ],
               ),
             ),
             const SizedBox(height: 16),
-            _buildTextField('Name', 'Charlotte King'),
-            _buildTextField('Email address', '@johnkinggraphics.gmail.com'),
-            _buildTextField('Username', '@johnkinggraphics'),
-            _buildTextField('Password', '**********', isPassword: true),
-            _buildTextField('Phone number', '+91 6895312'),
+            ElevatedButton(
+              onPressed: () {
+                // Handle save changes
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    AppColors.primary, // Set the button's background color
+                foregroundColor: AppColors.onPrimary, // Set the text color
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5), // Set border radius
+                ),
+                textStyle: const TextStyle(
+                  fontSize:
+                      16, // Optional: Define font size or other text properties
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              child: const Text(
+                'Save Changes',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
           ],
         ),
       ),
@@ -137,7 +191,9 @@ class EditProfilePage extends StatelessWidget {
         decoration: InputDecoration(
           labelText: label,
           hintText: hint,
-          border: const OutlineInputBorder(),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8), // Reduced border radius
+          ),
           suffixIcon: isPassword ? const Icon(Icons.visibility) : null,
         ),
       ),

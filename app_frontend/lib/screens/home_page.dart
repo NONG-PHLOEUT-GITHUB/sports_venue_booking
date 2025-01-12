@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_venue_booking/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
         child: AppBar(
           elevation: 0,
           centerTitle: false,
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.primary,
           flexibleSpace: Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 50),
             child: Row(
@@ -30,22 +31,22 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text(
-                      'Welcome',
+                      'Welcome......',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: AppColors.onSecondary,
                       ),
                     ),
                     Row(
                       children: [
-                        Icon(Icons.location_on, color: Colors.grey, size: 16),
+                        Icon(Icons.location_on_outlined, color: AppColors.onSecondary, size: 16),
                         SizedBox(width: 4),
                         Text(
                           'Phnom Penh',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.red,
+                            color: AppColors.onSecondary,
                           ),
                         ),
                       ],
@@ -60,7 +61,7 @@ class HomePage extends StatelessWidget {
                         IconButton(
                           icon: Badge.count(
                             count: 99,
-                            child: const Icon(Icons.notifications_none),
+                            child: const Icon(Icons.notifications_none, color: AppColors.onSecondary),
                           ),
                           onPressed: () {},
                         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_venue_booking/theme/app_colors.dart';
 
 class TicketPage extends StatelessWidget {
   const TicketPage({Key? key}) : super(key: key);
@@ -7,8 +8,15 @@ class TicketPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tickets'),
-       backgroundColor: Colors.white,
+       title: const Text(
+            'Ticket',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppColors.onSecondary,
+            ),
+          ),
+          backgroundColor: AppColors.primary,
       ),
       body: ListView.builder(
         itemCount: 5, // Replace with your ticket count
