@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
+import 'package:intl/intl.dart';
 
 class BookingPage extends StatelessWidget {
   BookingPage({super.key});
@@ -10,28 +11,26 @@ class BookingPage extends StatelessWidget {
       "imageUrl":
           'https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg',
       "title": "Water football field",
-      "price": "\$259/m",
-      "location": "Viet Nam, Ho Chi Minh",
+      "location": "Phnom Penh",
       "time": "07:00 AM - 11:00 PM",
       "rating": "4.9",
       "reviews": "(370 reviews)",
-      "discount": "🔥 10% Discount area",
-      "distance": "1.4 km",
-      "slots": "Last 2 slots",
+      "price": "20",
+      // "distance": "1.4 km",
+      "slots": "2 Field Available",
     },
     // You can add more entries here to simulate more bookings
     {
       "imageUrl":
           'https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343-2.jpg&fm=jpg',
       "title": "Beach volleyball field",
-      "price": "\$199/m",
-      "location": "Viet Nam, Da Nang",
+      "location": "Phnom Penh",
       "time": "08:00 AM - 10:00 PM",
       "rating": "4.7",
       "reviews": "(280 reviews)",
-      "discount": "🔥 15% Discount area",
-      "distance": "2.0 km",
-      "slots": "Last 3 slots",
+      "price": "20",
+      // "distance": "2.0 km",
+      "slots": "2 Field Available",
     },
     // Add more data as needed
   ];
@@ -40,18 +39,48 @@ class BookingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            'Booking',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.onSecondary,
+        iconTheme: IconThemeData(
+          color: Colors.white, // Color for the back button icon
+        ),
+        backgroundColor: AppColors.primary,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 0),
+        ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Location icon and text
+            Row(
+              children: [
+                Icon(
+                  Icons.location_on, // location icon
+                  color: Colors.white,
+                ),
+                SizedBox(width: 5),
+                Text(
+                  'Phnom Penh', // Location text
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.onSecondary, // Adjust to your app color
+                  ),
+                ),
+              ],
             ),
-          ),
-          backgroundColor: AppColors.primary,
-          flexibleSpace: Padding(
-            padding: const EdgeInsets.only(top: 20),
-          )),
+
+            // Current date display
+            Text(
+              DateFormat('dd-MMMM-yyyy')
+                  .format(DateTime.now()), // Display current date
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView.builder(
@@ -95,21 +124,21 @@ class BookingPage extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Text(
-                                      booking['price']!,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ),
+                                  // Container(
+                                  //   padding: const EdgeInsets.symmetric(
+                                  //       horizontal: 8, vertical: 4),
+                                  //   decoration: BoxDecoration(
+                                  //     color: Colors.black,
+                                  //     borderRadius: BorderRadius.circular(8),
+                                  //   ),
+                                  //   child: Text(
+                                  //     booking['price']!,
+                                  //     style: const TextStyle(
+                                  //       color: Colors.white,
+                                  //       fontSize: 12,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                               const SizedBox(height: 4),
@@ -175,44 +204,43 @@ class BookingPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          booking['discount']!,
+                          '\$ ${booking['price']}',
                           style: const TextStyle(
-                            color: Colors.red,
+                            color: AppColors.primary,
                             fontWeight: FontWeight.bold,
-                            fontSize: 12,
+                            fontSize: 20,
                           ),
                         ),
                         Row(
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: Colors.yellow[100],
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                booking['distance']!,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
                             const SizedBox(width: 8),
                             Container(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
-                                color: Colors.blue[100],
+                                color: AppColors.primary,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Text(
-                                booking['slots']!,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize
+                                    .min, // Keeps the container compact
+                                children: [
+                                  const Icon(
+                                    Icons.stadium, // Example icon (clock)
+                                    color: Colors.white,
+                                    size: 16, // Adjust the icon size as needed
+                                  ),
+                                  const SizedBox(
+                                      width:
+                                          4), // Spacing between icon and text
+                                  Text(
+                                    booking['slots']!,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -229,3 +257,4 @@ class BookingPage extends StatelessWidget {
     );
   }
 }
+

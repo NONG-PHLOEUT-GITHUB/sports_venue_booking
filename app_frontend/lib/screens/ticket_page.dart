@@ -2,108 +2,308 @@ import 'package:flutter/material.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
 
 class TicketPage extends StatelessWidget {
-  const TicketPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       title: const Text(
-            'Ticket',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.onSecondary,
-            ),
-          ),
-          backgroundColor: AppColors.primary,
+        backgroundColor: Colors.white,
+        title: Text(
+          "My Bookings",
+          style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+        elevation: 1,
       ),
+      backgroundColor: Colors.grey.shade200,
       body: ListView.builder(
-        itemCount: 5, // Replace with your ticket count
-        itemBuilder: (context, index) {
-          return TicketCard(
-            ticketNumber: 'TKT${index + 1001}',
-            title: 'Issue with feature ${index + 1}',
-            date: '2025-01-01',
-            status: index % 2 == 0 ? 'Open' : 'Closed',
-          );
-        },
-      ),
+          itemCount: 10,
+          padding: EdgeInsets.only(top: 8, bottom: 8),
+          itemBuilder: (context, index) {
+            return TicketView();
+          }),
     );
   }
 }
 
-class TicketCard extends StatelessWidget {
-  final String ticketNumber;
-  final String title;
-  final String date;
-  final String status;
-
-  const TicketCard({
-    Key? key,
-    required this.ticketNumber,
-    required this.title,
-    required this.date,
-    required this.status,
-  }) : super(key: key);
-
+class TicketView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              ticketNumber,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-              ),
+    return Padding(
+      padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24))),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "Phnom Penh Champain",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Paid",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 0, vertical: 4),
+                      child: Row(
+                        mainAxisSize:
+                            MainAxisSize.min, // Keeps the container compact
+                        children: [
+                          const Icon(
+                            Icons.location_on_outlined, // Example icon (clock)
+                            color: Colors.black,
+                            size: 16, // Adjust the icon size as needed
+                          ),
+                          const SizedBox(
+                              width: 4), // Spacing between icon and text
+                          Text(
+                            'Phnom Penh',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 0, vertical: 4),
+                      child: Row(
+                        mainAxisSize:
+                            MainAxisSize.min, // Keeps the container compact
+                        children: [
+                          const Icon(
+                            Icons.date_range_outlined, // Example icon (clock)
+                            color: Colors.black,
+                            size: 16, // Adjust the icon size as needed
+                          ),
+                          const SizedBox(
+                              width: 4), // Spacing between icon and text
+                          Text(
+                            '2/2/2025',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      "02:30 PM",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.indigo),
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                          color: Colors.indigo.shade50,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: SizedBox(
+                        height: 8,
+                        width: 8,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: Colors.indigo.shade400,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Stack(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 24,
+                              child: LayoutBuilder(
+                                builder: (context, constraints) {
+                                  return Flex(
+                                    children: List.generate(
+                                        (constraints.constrainWidth() / 6)
+                                            .floor(),
+                                        (index) => SizedBox(
+                                              height: 1,
+                                              width: 3,
+                                              child: DecoratedBox(
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        Colors.grey.shade300),
+                                              ),
+                                            )),
+                                    direction: Axis.horizontal,
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                          color: Colors.pink.shade50,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: SizedBox(
+                        height: 8,
+                        width: 8,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: Colors.pink.shade400,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Text(
+                      "04:30 PM",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.pink),
+                    )
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(height: 8.0),
-            Text(
-              title,
-              style: const TextStyle(fontSize: 14.0),
-            ),
-            const SizedBox(height: 8.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  date,
-                  style: const TextStyle(
-                    fontSize: 12.0,
-                    color: Colors.grey,
+          ),
+          Container(
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  height: 20,
+                  width: 10,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            bottomRight: Radius.circular(10)),
+                        color: Colors.grey.shade200),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0,
-                    vertical: 4.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: status == 'Open' ? Colors.green : Colors.red,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Text(
-                    status,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return Flex(
+                          direction: Axis.horizontal,
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: List.generate(
+                              (constraints.constrainWidth() / 10).floor(),
+                              (index) => SizedBox(
+                                    height: 1,
+                                    width: 5,
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey.shade400),
+                                    ),
+                                  )),
+                        );
+                      },
                     ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                  width: 10,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10)),
+                        color: Colors.grey.shade200),
                   ),
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 16, right: 16, bottom: 12),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(24),
+                    bottomRight: Radius.circular(24))),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.amber.shade50,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Icon(Icons.stadium_outlined, color: AppColors.primary),
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+                Text("Field A",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey)),
+                Expanded(
+                    child: Text("\u0024 20",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black))),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

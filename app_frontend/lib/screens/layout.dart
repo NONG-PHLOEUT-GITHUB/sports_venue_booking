@@ -19,7 +19,7 @@ class _MainLayoutState extends State<MainLayout> {
   final List<Widget> _pages = [
     HomePage(),
     BookingPage(),
-    const TicketPage(),
+    TicketPage(),
     const ProfilePage(),
   ];
 
@@ -51,7 +51,7 @@ class _MainLayoutState extends State<MainLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
-            label: 'Profile',
+            label: 'Account',
           ),
         ],
         currentIndex: _selectedIndex,

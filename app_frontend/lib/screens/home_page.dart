@@ -1,18 +1,114 @@
 import 'package:flutter/material.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
+import '../components/carousel_slider.dart';
+import 'booking_page.dart';
+import '../components/card_section.dart';
+
+//   final List<String> provinces = [
+//     'Phnom Penh',
+//     'Battambang',
+//     'Siem Reap',
+//     'Banteay Meanchey',
+//   ];
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(65),
+        child: AppBar(
+          elevation: 0,
+          centerTitle: false,
+          backgroundColor: AppColors.primary,
+          flexibleSpace: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 50,bottom: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      'Welcome......',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.onSecondary,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      
+                      children: [
+                        Icon(Icons.location_on_outlined,
+                            color: AppColors.onSecondary, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Phnom Penh',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.onSecondary,
+                          ),
+                        ),
+                        
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Stack(
+                      children: [
+                        const SizedBox(height: 20),
+                        
+                        IconButton(
+                          icon: Badge.count(
+                            count: 99,
+                            child: const Icon(Icons.notifications_none,
+                                color: AppColors.onSecondary),
+                          ),
+                          onPressed: () {},
+                        ),
+                        
+                        // Container(
+                        //   padding: EdgeInsets.all(8),
+                        //   decoration: BoxDecoration(
+                        //       color: const Color.fromARGB(255, 234, 232, 226),
+                        //       borderRadius: BorderRadius.circular(20)),
+                        //   child: Icon(Icons.notifications_none,
+                        //       color: AppColors.secondary),
+                              
+                        // ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.grey.shade200,
+      body: ListView.builder(
+          itemCount: 1,
+          padding: EdgeInsets.only(top: 8, bottom: 8),
+          itemBuilder: (context, index) {
+            return BookingView();
+          }),
+    );
+  }
+}
 
-  final List<String> provinces = [
-    'Phnom Penh',
-    'Battambang',
-    'Siem Reap',
-    'Banteay Meanchey',
-  ];
+class BookingView extends StatefulWidget {
+  @override
+  _BookingViewState createState() => _BookingViewState();
+}
 
-  String selectedProvince = 'Phnom Penh';
-  // Example data for the cards
+class _BookingViewState extends State<BookingView> {
+  String selectedSport = "Football";
+
   final List<Map<String, String>> cardData = [
     {
       "title": "Phnom Penh Champain",
@@ -36,281 +132,302 @@ class HomePage extends StatelessWidget {
     },
   ];
 
+  final List<Map<String, dynamic>> sports = [
+    {"name": "Football", "icon": Icons.sports_soccer, "color": Colors.green},
+    {
+      "name": "Basketball",
+      "icon": Icons.sports_basketball,
+      "color": Colors.orange
+    },
+    {"name": "Tennis", "icon": Icons.sports_tennis, "color": Colors.yellow},
+    {"name": "Cricket", "icon": Icons.sports_cricket, "color": Colors.blue},
+    {"name": "Hockey", "icon": Icons.sports_hockey, "color": Colors.red},
+  ];
+
+  DateTime selectedDate = DateTime.now(); // Store selected date
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: AppBar(
-          elevation: 0,
-          centerTitle: false,
-          backgroundColor: AppColors.primary,
-          flexibleSpace: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16, top: 50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'Welcome......',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.onSecondary,
-                      ),
-                    ),
+    return Padding(
+      padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          // image slider widget
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 6),
+                child: Text(
+                  "Specail Promotion",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              ImageSlider(),
+              SizedBox(height: 10),
+            ],
+          ),
+
+          // Filtered wdget
+          Container(
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24))),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
                     Row(
                       children: [
-                        Icon(Icons.location_on_outlined,
-                            color: AppColors.onSecondary, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Phnom Penh',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: AppColors.onSecondary,
+                        FloatingActionButton(
+                          onPressed: () => _selectDate(context),
+                          backgroundColor: AppColors.primary,
+                          child: const Icon(
+                            Icons.calendar_month_outlined,
+                            color: Colors.white,
                           ),
                         ),
+                        SizedBox(
+                            width:
+                                12), // Adjust the space between the icon and text
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${selectedDate.day}/${_getMonthName(selectedDate.month)}",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              "${selectedDate.year}",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              _getWeekdayName(selectedDate.weekday),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        )
                       ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          value: selectedSport,
+                          onChanged: (newValue) {
+                            setState(() {
+                              selectedSport = newValue!;
+                            });
+                          },
+                          items: sports.map((sport) {
+                            return DropdownMenuItem<String>(
+                              value: sport["name"],
+                              child: Row(
+                                children: [
+                                  Icon(sport["icon"], color: sport["color"]),
+                                  SizedBox(width: 6),
+                                  Text(
+                                    sport["name"],
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Stack(
-                      children: [
-                        const SizedBox(height: 20),
-                        IconButton(
-                          icon: Badge.count(
-                            count: 99,
-                            child: const Icon(Icons.notifications_none,
-                                color: AppColors.onSecondary),
-                          ),
-                          onPressed: () {},
-                        ),
-                      ],
+                // Text("Thursday", style: TextStyle(color: Colors.grey)),
+                SizedBox(height: 12),
+              ],
+            ),
+          ),
+          Container(
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  height: 20,
+                  width: 10,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            bottomRight: Radius.circular(10)),
+                        color: Colors.grey.shade200),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return Flex(
+                          direction: Axis.horizontal,
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: List.generate(
+                              (constraints.constrainWidth() / 10).floor(),
+                              (index) => SizedBox(
+                                    height: 1,
+                                    width: 5,
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey.shade400),
+                                    ),
+                                  )),
+                        );
+                      },
                     ),
-                  ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                  width: 10,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10)),
+                        color: Colors.grey.shade200),
+                  ),
                 ),
               ],
             ),
           ),
-        ),
-      ),
-      body: Column(
-        children: [
-          // Add the TopScrollableIcons widget
-          TopScrollableIcons(),
-          const SizedBox(height: 8), // Add some spacing
-          // Expanded ListView to ensure proper layout
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: cardData.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  elevation: 4,
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          Container(
+            padding: EdgeInsets.only(left: 16, right: 16, bottom: 12),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(24),
+                    bottomRight: Radius.circular(24))),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BookingPage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(8)),
-                        child: Image.network(
-                          cardData[index]['imageUrl']!,
-                          height: 200,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              cardData[index]['status']!,
-                              style: const TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              cardData[index]['title']!,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Row(
-                              children: [
-                                const Icon(Icons.location_on_outlined,
-                                    size: 16),
-                                const SizedBox(width: 4),
-                                Text(
-                                  cardData[index]['location']!,
-                                  style: const TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                const Icon(Icons.sports_soccer,
-                                    size: 16, color: Colors.grey),
-                                const SizedBox(width: 4),
-                                Text(
-                                  '${cardData[index]['fieldsAvailable']} Field Available',
-                                  style: const TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Row(
-                                  children: List.generate(
-                                    5,
-                                    (ratingIndex) => Icon(
-                                      Icons.star,
-                                      size: 16,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  cardData[index]['rating'].toString(),
-                                  style: const TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                RichText(
-                                  text: TextSpan(
-                                    text: '\$${cardData[index]['price']} ',
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue,
-                                    ),
-                                    children: const [
-                                      TextSpan(
-                                        text: '/ hour',
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.normal,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.bookmark_border,
-                                      color: Colors.grey),
-                                  onPressed: () {
-                                    // Handle bookmark
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                );
-              },
+                  padding: EdgeInsets.symmetric(vertical: 14, horizontal: 50),
+                ),
+                child: Text(
+                  "Let's Make a Book",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
             ),
+          ),
+
+          // list card wdget
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 6),
+                child: Text(
+                  "Recommendation Field",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              // ✅ Add CardSection Properly
+              CardSection(),
+            ],
           ),
         ],
       ),
     );
   }
-}
 
-class TopScrollableIcons extends StatefulWidget {
-  @override
-  _TopScrollableIconsState createState() => _TopScrollableIconsState();
-}
+  // Convert month number to name
+  String _getMonthName(int month) {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    return months[month - 1];
+  }
 
-class _TopScrollableIconsState extends State<TopScrollableIcons> {
-  final List<Map<String, String>> sports = [
-    {'name': 'Soccer', 'icon': '⚽'},
-    {'name': 'Futsal', 'icon': '🏐'},
-    {'name': 'Basket', 'icon': '🏀'},
-    {'name': 'Badminton', 'icon': '🏸'},
-  ];
-
-  int? selectedIndex; // Tracks the currently active button
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 70, // Adjust height as needed
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: sports.length,
-        itemBuilder: (context, index) {
-          final isActive =
-              selectedIndex == index; // Check if the button is active
-
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index; // Set the clicked button as active
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Card(
-                color: isActive
-                    ? Colors.blue.shade100
-                    : Colors.white, // Active state color
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                elevation: 1,
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-                  child: Row(
-                    children: [
-                      Text(
-                        sports[index]['name']!,
-                        style: const TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        sports[index]['icon']!,
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
+  // Convert weekday number to name
+  String _getWeekdayName(int weekday) {
+    const weekdays = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ];
+    return weekdays[weekday - 1];
   }
 }
