@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sports_venue_booking/screens/edite_account.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
-import 'switch_language_page.dart';
+import 'switch_language_screen.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
