@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
 import '../components/carousel_slider.dart';
-import 'booking_page.dart';
-import '../components/card_section.dart';
+import 'booking_screen.dart';
+import 'notification.dart';
+// import '../components/card_section.dart';
 
 //   final List<String> provinces = [
 //     'Phnom Penh',
@@ -22,7 +23,8 @@ class HomePage extends StatelessWidget {
           centerTitle: false,
           backgroundColor: AppColors.primary,
           flexibleSpace: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16, top: 50,bottom: 10),
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, top: 50, bottom: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -40,7 +42,6 @@ class HomePage extends StatelessWidget {
                     ),
                     SizedBox(height: 5),
                     Row(
-                      
                       children: [
                         Icon(Icons.location_on_outlined,
                             color: AppColors.onSecondary, size: 16),
@@ -52,7 +53,6 @@ class HomePage extends StatelessWidget {
                             color: AppColors.onSecondary,
                           ),
                         ),
-                        
                       ],
                     ),
                   ],
@@ -62,25 +62,22 @@ class HomePage extends StatelessWidget {
                     Stack(
                       children: [
                         const SizedBox(height: 20),
-                        
                         IconButton(
                           icon: Badge.count(
                             count: 99,
+                            backgroundColor: Colors.red,
                             child: const Icon(Icons.notifications_none,
                                 color: AppColors.onSecondary),
                           ),
-                          onPressed: () {},
+                          // onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NotificationPage()),
+                            );
+                          },
                         ),
-                        
-                        // Container(
-                        //   padding: EdgeInsets.all(8),
-                        //   decoration: BoxDecoration(
-                        //       color: const Color.fromARGB(255, 234, 232, 226),
-                        //       borderRadius: BorderRadius.circular(20)),
-                        //   child: Icon(Icons.notifications_none,
-                        //       color: AppColors.secondary),
-                              
-                        // ),
                       ],
                     ),
                   ],
@@ -90,7 +87,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: AppColors.appBackground,
       body: ListView.builder(
           itemCount: 1,
           padding: EdgeInsets.only(top: 8, bottom: 8),
@@ -109,26 +106,18 @@ class BookingView extends StatefulWidget {
 class _BookingViewState extends State<BookingView> {
   String selectedSport = "Football";
 
-  final List<Map<String, String>> cardData = [
+  final List<Map<String, String>> bookingData = [
     {
-      "title": "Phnom Penh Champain",
-      "price": "15",
-      "fieldsAvailable": '3',
-      "subtitle": "This is the first card.",
-      'location': 'Phnom Pench',
-      'status': 'open',
-      'imageUrl':
-          'https://en.reformsports.com/oxegrebi/2023/07/why-do-they-sprinkle-football-pitches.jpg'
-    },
-    {
-      "title": "Phnom Penh Champain",
-      "price": "15",
-      "fieldsAvailable": '3',
-      "subtitle": "This is the first card.",
-      'location': 'Phnom Pench',
-      'status': 'open',
-      'imageUrl':
-          'https://en.reformsports.com/oxegrebi/2023/07/why-do-they-sprinkle-football-pitches.jpg'
+      "imageUrl":
+          'https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg',
+      "title": "Water football field",
+      "location": "Phnom Penh",
+      "time": "07:00 AM - 11:00 PM",
+      "rating": "4.9",
+      "reviews": "(370 reviews)",
+      "price": "20",
+      // "distance": "1.4 km",
+      "slots": "2 Field Available",
     },
   ];
 
@@ -187,7 +176,7 @@ class _BookingViewState extends State<BookingView> {
               SizedBox(height: 10),
             ],
           ),
-
+          SizedBox(height: 6),
           // Filtered wdget
           Container(
             padding: EdgeInsets.all(16),
@@ -256,6 +245,10 @@ class _BookingViewState extends State<BookingView> {
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton<String>(
                           value: selectedSport,
+                          menuMaxHeight: 350,
+                          borderRadius:
+                              BorderRadius.circular(12), // Rounded corners
+                          dropdownColor: Colors.white,
                           onChanged: (newValue) {
                             setState(() {
                               selectedSport = newValue!;
@@ -281,8 +274,6 @@ class _BookingViewState extends State<BookingView> {
                     ),
                   ],
                 ),
-                // Text("Thursday", style: TextStyle(color: Colors.grey)),
-                SizedBox(height: 12),
               ],
             ),
           ),
@@ -380,7 +371,7 @@ class _BookingViewState extends State<BookingView> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 6),
                 child: Text(
-                  "Recommendation Field",
+                  "Last Field Today",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -388,9 +379,38 @@ class _BookingViewState extends State<BookingView> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              // SizedBox(height: 10),
+              Padding(
+                padding: EdgeInsets.all(0),
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      'Flutter Teacher mmkkkkk',
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  ),
+                ),
+              )
               // ✅ Add CardSection Properly
-              CardSection(),
+              // Flexible(
+              //   child: ListView.builder(
+              //     itemCount: bookingData.length,
+              //     itemBuilder: (context, index) {
+              //       var data = bookingData[index];
+              //       return CardSection(
+              //         imageUrl: data["imageUrl"]!,
+              //         title: data["title"]!,
+              //         location: data["location"]!,
+              //         time: data["time"]!,
+              //         rating: data["rating"]!,
+              //         reviews: data["reviews"]!,
+              //         price: data["price"]!,
+              //         slots: data["slots"]!,
+              //       );
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ],

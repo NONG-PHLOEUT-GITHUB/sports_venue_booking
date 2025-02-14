@@ -1,171 +1,119 @@
 import 'package:flutter/material.dart';
-
 class CardSection extends StatelessWidget {
+  final String imageUrl;
+  final String title;
+  final String location;
+  final String time;
+  final String rating;
+  final String reviews;
+  final String price;
+  final String slots;
 
-  final List<Map<String, dynamic>> fields = [
-    {
-      "image":
-          "https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg", // Replace with actual image path
-      "title": "Water football field",
-      "location": "Phnom Penh",
-      "time": "07:00 AM - 11:00 PM",
-      "rating": 4.9,
-      "reviews": 370,
-      "price": 20,
-      "availability": "2 Field Available"
-    },
-    {
-      "image":
-          "https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg", // Replace with actual image path
-      "title": "Beach volleyball field",
-      "location": "Phnom Penh",
-      "time": "08:00 AM - 10:00 PM",
-      "rating": 4.7,
-      "reviews": 280,
-      "price": 20,
-      "availability": "2 Field Available"
-    },
-    {
-      "image":
-          "https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg", // Replace with actual image path
-      "title": "Beach volleyball field",
-      "location": "Phnom Penh",
-      "time": "08:00 AM - 10:00 PM",
-      "rating": 4.7,
-      "reviews": 280,
-      "price": 20,
-      "availability": "2 Field Available"
-    },
-    {
-      "image":
-          "https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg", // Replace with actual image path
-      "title": "Beach volleyball field",
-      "location": "Phnom Penh",
-      "time": "08:00 AM - 10:00 PM",
-      "rating": 4.7,
-      "reviews": 280,
-      "price": 20,
-      "availability": "2 Field Available"
-    },
-  ];
+  const CardSection({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+    required this.location,
+    required this.time,
+    required this.rating,
+    required this.reviews,
+    required this.price,
+    required this.slots,
+  });
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    return SizedBox(
-      height: screenHeight * 0.29, // Adjust height based on need
-      child: ListView.builder(
-        itemCount: fields.length,
-        itemBuilder: (context, index) {
-          var field = fields[index];
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      elevation: 1,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                imageUrl,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
             ),
-            color: Colors.white,
-            elevation: 0,
-            // margin: EdgeInsets.symmetric(vertical: 10),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      field['image']!,
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          field["title"],
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  SizedBox(height: 5),
+                  Row(
+                    children: [
+                      const Icon(Icons.location_on, size: 16, color: Colors.grey),
+                      Text(
+                        location,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 5),
+                  Row(
+                    children: [
+                      const Icon(Icons.timelapse_outlined, size: 16, color: Colors.grey),
+                      Text(
+                        time,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 5),
+                  // Row(
+                  //   children: [
+                  //     const Icon(Icons.star, size: 16, color: Colors.orange),
+                  //     Text('$rating $reviews'),
+                  //   ],
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '\$$price',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
                         ),
-                        SizedBox(height: 4),
-                        Row(
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.green.shade100,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
                           children: [
-                            Icon(Icons.location_on,
-                                size: 14, color: Colors.grey),
-                            SizedBox(width: 4),
-                            Text(
-                              field["location"],
-                              style: TextStyle(color: Colors.grey),
-                            ),
+                            const Icon(Icons.event_available, size: 16, color: Colors.green),
+                            const SizedBox(width: 4),
+                            Text(slots),
                           ],
                         ),
-                        SizedBox(height: 4),
-                        Row(
-                          children: [
-                            Icon(Icons.access_time,
-                                size: 14, color: Colors.grey),
-                            SizedBox(width: 4),
-                            Text(
-                              field["time"],
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 4),
-                        Row(
-                          children: [
-                            Icon(Icons.star, size: 14, color: Colors.amber),
-                            SizedBox(width: 4),
-                            Text(
-                              "${field["rating"]} (${field["reviews"]} reviews)",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "\$${field["price"]}",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green,
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 4, horizontal: 10),
-                              decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.stadium,
-                                      size: 16, color: Colors.white),
-                                  SizedBox(width: 4),
-                                  Text(
-                                    field["availability"],
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }

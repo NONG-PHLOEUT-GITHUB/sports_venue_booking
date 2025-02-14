@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_venue_booking/theme/app_colors.dart';
 
 class SwitchLanguagePage extends StatefulWidget {
   @override
@@ -10,26 +11,26 @@ class _SwitchLanguagePageState extends State<SwitchLanguagePage> {
 
   final List<Map<String, String>> languages = [
     {'label': 'English', 'flag': '🇬🇧'}, // English flag
-    {'label': 'Khmer', 'flag': '🇰🇭'},   // Cambodian flag
+    {'label': 'Khmer', 'flag': '🇰🇭'}, // Cambodian flag
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: const Text('Language'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Color for the back button icon
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.check_circle),
-            onPressed: () {
-              // Handle language selection confirmation
-            },
+        backgroundColor: AppColors.primary,
+        title: const Text(
+          'Change Language',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.onSecondary,
           ),
-        ],
+        ),
       ),
       body: ListView.separated(
         padding: const EdgeInsets.all(16.0),
@@ -51,7 +52,7 @@ class _SwitchLanguagePageState extends State<SwitchLanguagePage> {
                 color: isSelected ? Colors.white : Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: isSelected ? Colors.orange : Colors.grey.shade300,
+                  color: isSelected ? AppColors.primary : Colors.grey.shade300,
                   width: isSelected ? 1.0 : 1.0,
                 ),
                 boxShadow: [

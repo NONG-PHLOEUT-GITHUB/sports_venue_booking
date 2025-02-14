@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'account_page.dart';
-import 'booking_page.dart';
-import 'ticket_page.dart';
+import 'package:sports_venue_booking/screens/venu_screen.dart';
+import 'home_screen.dart';
+import 'account_screen.dart';
+import 'ticket_screen.dart';
 import '../theme/app_colors.dart';
 
 class MainLayout extends StatefulWidget {
@@ -18,7 +18,7 @@ class _MainLayoutState extends State<MainLayout> {
   // Pages for each tab
   final List<Widget> _pages = [
     HomePage(),
-    BookingPage(),
+    CardTest(),
     TicketPage(),
     const ProfilePage(),
   ];
@@ -42,8 +42,8 @@ class _MainLayoutState extends State<MainLayout> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark_add_outlined),
-            label: 'Booking',
+            icon: Icon(Icons.location_on_outlined),
+            label: 'Venu',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.confirmation_number_outlined),

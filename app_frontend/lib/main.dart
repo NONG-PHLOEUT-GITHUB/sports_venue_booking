@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sports_venue_booking/screens/booking_page.dart';
-import 'package:sports_venue_booking/screens/ticket_page.dart';
-import 'screens/home_page.dart';
-import 'screens/account_page.dart';
 import 'screens/layout.dart';
 // import 'components/loading.dart';
 
@@ -17,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -36,6 +33,13 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        colorScheme: const ColorScheme.light(primary: Color(0xFF62AD14)),
+        datePickerTheme: const DatePickerThemeData(
+          backgroundColor: Colors.white,
+          dividerColor: Color(0xFF62AD14),
+          headerBackgroundColor: Color(0xFF62AD14),
+          headerForegroundColor: Colors.white,
+        ),
       ),
       home:const MainLayout()
       // initialRoute: '/',
@@ -68,18 +72,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  // int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  // void _incrementCounter() {
+  //   setState(() {
+  //     // This call to setState tells the Flutter framework that something has
+  //     // changed in this State, which causes it to rerun the build method below
+  //     // so that the display can reflect the updated values. If we changed
+  //     // _counter without calling setState(), then the build method would not be
+  //     // called again, and so nothing would appear to happen.
+  //     _counter++;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      //Scaffold is a screen 
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar

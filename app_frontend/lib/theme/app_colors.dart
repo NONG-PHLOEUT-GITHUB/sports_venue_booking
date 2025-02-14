@@ -6,6 +6,6 @@ class AppColors {
   static const Color secondary = Colors.black; // Secondary brand color
   static const Color onSecondary = Colors.white; // Text/icon color on secondary
   static const Color accent = Colors.red; // Accent color for highlights
-  static const Color background = Color(0xFFD6D5D5); // Light gray background color
+  static const Color appBackground = Color.fromRGBO(238, 238, 238, 1); // Light gray background color
   static const Color surface = Colors.grey; // Neutral surface color
 }

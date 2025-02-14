@@ -6,11 +6,11 @@ class TicketPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.primary,
         title: Text(
           "My Bookings",
           style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
         elevation: 1,
       ),
@@ -162,6 +162,10 @@ class TicketView extends StatelessWidget {
                               child: LayoutBuilder(
                                 builder: (context, constraints) {
                                   return Flex(
+                                    direction: Axis.horizontal,
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: List.generate(
                                         (constraints.constrainWidth() / 6)
                                             .floor(),
@@ -174,10 +178,6 @@ class TicketView extends StatelessWidget {
                                                         Colors.grey.shade300),
                                               ),
                                             )),
-                                    direction: Axis.horizontal,
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                   );
                                 },
                               ),
