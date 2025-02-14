@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sports_venue_booking/screens/confirmation_screen.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
 import '../components/carousel_slider.dart';
 import 'booking_screen.dart';
@@ -384,6 +385,13 @@ class _BookingViewState extends State<BookingView> {
               // SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.all(0),
+                child:InkWell(
+                  onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ConfirmationScreen()),
+            );
+          },
                 child: Card(
                   child: Padding(
                     padding: EdgeInsets.all(16),
@@ -393,6 +401,7 @@ class _BookingViewState extends State<BookingView> {
                     ),
                   ),
                 ),
+                )
               )
               // ✅ Add CardSection Properly
               // Flexible(
