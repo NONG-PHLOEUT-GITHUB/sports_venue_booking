@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
 
 class TicketPage extends StatelessWidget {
+  const TicketPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

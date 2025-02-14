@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CardTest extends StatelessWidget {
   //
-  const CardTest({Key? key}) : super(key: key);
+  const CardTest({super.key});
 
   //
   @override
