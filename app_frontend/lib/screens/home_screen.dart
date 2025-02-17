@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sports_venue_booking/screens/confirmation_screen.dart';
+import 'package:sports_venue_booking/components/card_section.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
 import '../components/carousel_slider.dart';
 import 'booking_screen.dart';
-import 'notification.dart';
-// import '../components/card_section.dart';
-
-//   final List<String> provinces = [
-//     'Phnom Penh',
-//     'Battambang',
-//     'Siem Reap',
-//     'Banteay Meanchey',
-//   ];
+import 'notification_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,78 +11,73 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(65),
-        child: AppBar(
-          elevation: 0,
-          centerTitle: false,
-          backgroundColor: AppColors.primary,
-          flexibleSpace: Padding(
-            padding:
-                const EdgeInsets.only(left: 16, right: 16, top: 50, bottom: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'Welcome......',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.onSecondary,
+      backgroundColor: AppColors.appBackground,
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        flexibleSpace: Padding(
+          padding:
+              const EdgeInsets.only(left: 16, right: 16, top: 50, bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    'Welcome......',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.onSecondary,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on_outlined,
+                          color: AppColors.onSecondary, size: 16),
+                      SizedBox(width: 4),
+                      Text(
+                        'Phnom Penh',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.onSecondary,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Icon(Icons.location_on_outlined,
-                            color: AppColors.onSecondary, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Phnom Penh',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: AppColors.onSecondary,
-                          ),
+                    ],
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Stack(
+                    children: [
+                      const SizedBox(height: 20),
+                      IconButton(
+                        icon: Badge.count(
+                          count: 99,
+                          backgroundColor: Colors.red,
+                          child: const Icon(Icons.notifications_none,
+                              color: AppColors.onSecondary),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Stack(
-                      children: [
-                        const SizedBox(height: 20),
-                        IconButton(
-                          icon: Badge.count(
-                            count: 99,
-                            backgroundColor: Colors.red,
-                            child: const Icon(Icons.notifications_none,
-                                color: AppColors.onSecondary),
-                          ),
-                          // onPressed: () {},
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => NotificationPage()),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                        // onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotificationPage()),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
-      backgroundColor: AppColors.appBackground,
       body: ListView.builder(
           itemCount: 1,
           padding: EdgeInsets.only(top: 8, bottom: 8),
@@ -102,7 +89,10 @@ class HomePage extends StatelessWidget {
 }
 
 class BookingView extends StatefulWidget {
+  const BookingView({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _BookingViewState createState() => _BookingViewState();
 }
 
@@ -119,7 +109,6 @@ class _BookingViewState extends State<BookingView> {
       "rating": "4.9",
       "reviews": "(370 reviews)",
       "price": "20",
-      // "distance": "1.4 km",
       "slots": "2 Field Available",
     },
   ];
@@ -156,7 +145,7 @@ class _BookingViewState extends State<BookingView> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+      padding: EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 8),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -366,14 +355,12 @@ class _BookingViewState extends State<BookingView> {
             ),
           ),
 
-          // list card wdget
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: Text(
+          SizedBox(height: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
                   "Last Field Today",
                   style: TextStyle(
                     fontSize: 20,
@@ -381,49 +368,27 @@ class _BookingViewState extends State<BookingView> {
                     color: Colors.black,
                   ),
                 ),
-              ),
-              // SizedBox(height: 10),
-              Padding(
-                padding: EdgeInsets.all(0),
-                child:InkWell(
-                  onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ConfirmationScreen()),
-            );
-          },
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      'Flutter Teacher mmkkkkk',
-                      style: TextStyle(fontSize: 30),
-                    ),
-                  ),
+                ListView.builder(
+                  itemCount: bookingData.length,
+                  shrinkWrap:
+                      true, // Ensures the ListView is constrained in height
+                  itemBuilder: (context, index) {
+                    final venue = bookingData[index];
+                    return CardSection(
+                      imageUrl: venue["imageUrl"]!,
+                      title: venue["title"]!,
+                      location: venue["location"]!,
+                      time: venue["time"]!,
+                      rating: venue["rating"]!,
+                      reviews: venue["reviews"]!,
+                      price: venue["price"]!,
+                      slots: venue["slots"]!,
+                    );
+                  },
                 ),
-                )
-              )
-              // ✅ Add CardSection Properly
-              // Flexible(
-              //   child: ListView.builder(
-              //     itemCount: bookingData.length,
-              //     itemBuilder: (context, index) {
-              //       var data = bookingData[index];
-              //       return CardSection(
-              //         imageUrl: data["imageUrl"]!,
-              //         title: data["title"]!,
-              //         location: data["location"]!,
-              //         time: data["time"]!,
-              //         rating: data["rating"]!,
-              //         reviews: data["reviews"]!,
-              //         price: data["price"]!,
-              //         slots: data["slots"]!,
-              //       );
-              //     },
-              //   ),
-              // ),
-            ],
-          ),
+              ],
+            ),
+          )
         ],
       ),
     );

@@ -127,7 +127,7 @@ class BookingPage extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 20), // Add bottom padding
+        padding: const EdgeInsets.only(bottom: 20,left: 10,right: 10,top: 5), // Add bottom padding
         itemCount: bookingData.length,
         itemBuilder: (context, index) {
           final venue = bookingData[index];
