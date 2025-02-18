@@ -34,7 +34,7 @@ class BookingPage extends StatelessWidget {
     },
     {
       "imageUrl":
-          'https://www.aturf.com/wp-content/uploads/2021/11/sahlens-flash-field-corner-kick-sunset-listing.jpg',
+          'https://5.imimg.com/data5/SELLER/Default/2023/8/335122442/GI/HG/ER/19508713/synthetic-basketball-court.jpeg',
       "title": "Beach volleyball field",
       "location": "Phnom Penh",
       "time": "08:00 AM - 10:00 PM",

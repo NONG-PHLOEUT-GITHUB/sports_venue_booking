@@ -18,22 +18,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(65),
-        child: AppBar(
-          elevation: 0,
-          centerTitle: false,
-          backgroundColor: AppColors.primary,
-          flexibleSpace: Padding(
-            padding:
-                const EdgeInsets.only(left: 16, right: 16, top: 50, bottom: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      appBar: AppBar(
+        centerTitle: false,
+        backgroundColor: AppColors.primary,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
                     Text(
                       'Welcome......',
                       style: TextStyle(
@@ -59,34 +54,25 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Stack(
-                      children: [
-                        const SizedBox(height: 20),
-                        IconButton(
-                          icon: Badge.count(
-                            count: 99,
-                            backgroundColor: Colors.red,
-                            child: const Icon(Icons.notifications_none,
-                                color: AppColors.onSecondary),
-                          ),
-                          // onPressed: () {},
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => NotificationPage()),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
               ],
             ),
-          ),
+
+            // Current date display
+            IconButton(
+              icon: Badge.count(
+                count: 99,
+                backgroundColor: Colors.red,
+                child: const Icon(Icons.notifications_none,
+                    color: AppColors.onSecondary),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationPage()),
+                );
+              },
+            ),
+          ],
         ),
       ),
       backgroundColor: AppColors.appBackground,
