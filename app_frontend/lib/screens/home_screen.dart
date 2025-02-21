@@ -64,12 +64,12 @@ class HomePage extends StatelessWidget {
                         ),
                         // onPressed: () {},
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => ConfirmBookingScreen())
-                          //   // MaterialPageRoute(
-                          //   //     builder: (context) => NotificationPage()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ConfirmBookingScreen())
+                            // MaterialPageRoute(
+                            //     builder: (context) => NotificationPage()),
+                          );
                         },
                       ),
                     ],
