@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sports_venue_booking/components/card_section.dart';
+import 'package:sports_venue_booking/screens/confirm_booking_screen.dart';
 import 'package:sports_venue_booking/theme/app_colors.dart';
 import '../components/carousel_slider.dart';
 import 'booking_screen.dart';
@@ -65,8 +66,9 @@ class HomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => NotificationPage()),
+                            MaterialPageRoute(builder: (context) => ConfirmBookingScreen())
+                            // MaterialPageRoute(
+                            //     builder: (context) => NotificationPage()),
                           );
                         },
                       ),
@@ -80,7 +82,7 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView.builder(
           itemCount: 1,
-          padding: EdgeInsets.only(top: 8, bottom: 8),
+          padding: EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 8),
           itemBuilder: (context, index) {
             return BookingView();
           }),
@@ -100,6 +102,28 @@ class _BookingViewState extends State<BookingView> {
   String selectedSport = "Football";
 
   final List<Map<String, String>> bookingData = [
+    {
+      "imageUrl":
+          'https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg',
+      "title": "Water football field",
+      "location": "Phnom Penh",
+      "time": "07:00 AM - 11:00 PM",
+      "rating": "4.9",
+      "reviews": "(370 reviews)",
+      "price": "20",
+      "slots": "2 Field Available",
+    },
+    {
+      "imageUrl":
+          'https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg',
+      "title": "Water football field",
+      "location": "Phnom Penh",
+      "time": "07:00 AM - 11:00 PM",
+      "rating": "4.9",
+      "reviews": "(370 reviews)",
+      "price": "20",
+      "slots": "2 Field Available",
+    },
     {
       "imageUrl":
           'https://images.pexels.com/photos/47343/the-ball-stadion-horn-corner-47343.jpeg?cs=srgb&dl=pexels-pixabay-47343.jpg&fm=jpg',
@@ -144,8 +168,7 @@ class _BookingViewState extends State<BookingView> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 8),
+    return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -356,39 +379,37 @@ class _BookingViewState extends State<BookingView> {
           ),
 
           SizedBox(height: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  "Last Field Today",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "Last Field Today",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
-                ListView.builder(
-                  itemCount: bookingData.length,
-                  shrinkWrap:
-                      true, // Ensures the ListView is constrained in height
-                  itemBuilder: (context, index) {
-                    final venue = bookingData[index];
-                    return CardSection(
-                      imageUrl: venue["imageUrl"]!,
-                      title: venue["title"]!,
-                      location: venue["location"]!,
-                      time: venue["time"]!,
-                      rating: venue["rating"]!,
-                      reviews: venue["reviews"]!,
-                      price: venue["price"]!,
-                      slots: venue["slots"]!,
-                    );
-                  },
-                ),
-              ],
-            ),
-          )
+              ),
+              ListView.builder(
+                itemCount: bookingData.length,
+                shrinkWrap:true,
+                itemBuilder: (context, index) {
+                  final venue = bookingData[index];
+                  return CardSection(
+                    imageUrl: venue["imageUrl"]!,
+                    title: venue["title"]!,
+                    location: venue["location"]!,
+                    time: venue["time"]!,
+                    rating: venue["rating"]!,
+                    reviews: venue["reviews"]!,
+                    price: venue["price"]!,
+                    slots: venue["slots"]!,
+                  );
+                },
+              ),
+            ],
+          ),
         ],
       ),
     );
