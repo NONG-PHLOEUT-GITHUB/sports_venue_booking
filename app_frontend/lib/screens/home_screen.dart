@@ -12,74 +12,64 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.appBackground,
       appBar: AppBar(
+        centerTitle: false,
         backgroundColor: AppColors.primary,
-        flexibleSpace: Padding(
-          padding:
-              const EdgeInsets.only(left: 16, right: 16, top: 50, bottom: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    'Welcome......',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.onSecondary,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Welcome......',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.onSecondary,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    children: [
-                      Icon(Icons.location_on_outlined,
-                          color: AppColors.onSecondary, size: 16),
-                      SizedBox(width: 4),
-                      Text(
-                        'Phnom Penh',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.onSecondary,
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Icon(Icons.location_on_outlined,
+                            color: AppColors.onSecondary, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Phnom Penh',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.onSecondary,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+            // Current date display
+            IconButton(
+              icon: Badge.count(
+                count: 99,
+                backgroundColor: Colors.red,
+                child: const Icon(Icons.notifications_none,
+                    color: AppColors.onSecondary),
               ),
-              Row(
-                children: [
-                  Stack(
-                    children: [
-                      const SizedBox(height: 20),
-                      IconButton(
-                        icon: Badge.count(
-                          count: 99,
-                          backgroundColor: Colors.red,
-                          child: const Icon(Icons.notifications_none,
-                              color: AppColors.onSecondary),
-                        ),
-                        // onPressed: () {},
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => ConfirmBookingScreen())
-                            // MaterialPageRoute(
-                            //     builder: (context) => NotificationPage()),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationPage()),
+                );
+              },
+            ),
+          ],
         ),
       ),
+      backgroundColor: AppColors.appBackground,
       body: ListView.builder(
           itemCount: 1,
           padding: EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 8),
