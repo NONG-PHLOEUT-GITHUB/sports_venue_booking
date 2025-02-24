@@ -27,7 +27,7 @@ class CardSection extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      elevation: 1,
+      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Row(

@@ -20,7 +20,7 @@ class _MainLayoutState extends State<MainLayout> {
     HomePage(),
     CardTest(),
     TicketPage(),
-    const ProfilePage(),
+    ProfilePage(),
   ];
 
   // Handle bottom navigation taps
